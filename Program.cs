@@ -14,6 +14,8 @@ builder.Services.AddDbContext<DataContext>(opts => {
 });
 builder.Services.AddScoped<IRepository, EFRepository>();
 
+builder.Services.AddSession();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,6 +32,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
