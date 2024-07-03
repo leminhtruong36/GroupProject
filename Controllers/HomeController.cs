@@ -7,7 +7,7 @@ namespace GroupProject.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    QlbanValiContext db = new QlbanValiContext();
+    DataContext db = new DataContext();
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
@@ -15,10 +15,11 @@ public class HomeController : Controller
 
      public IActionResult Index(int? page)
  {
+    
      int pagesize = 8;
      int pageNumber= page ==null || page<0?1:page.Value;
-     var lstsanpham = db.TDanhMucSp.AsNoTracking().OrderBy(x=>x.TenSp);
-     PagedList<TDanhMucSp> lst = new PagedList<TDanhMucSp>(lstsanpham, pageNumber, pagesize);
+     var lstsanpham = db.DanhMucSps.AsNoTracking().OrderBy(x=>x.TenSp);
+     PagedList<DanhMucSp> lst = new PagedList<DanhMucSp>(lstsanpham, pageNumber, pagesize);
      return View(lstsanpham);
  }
 
@@ -26,8 +27,8 @@ public class HomeController : Controller
  {
      int pagesize = 8;
      int pageNumber = page == null || page < 0 ? 1 : page.Value;
-     var lstsanpham = db.TDanhMucSp.AsNoTracking().OrderBy(x => x.TenSp);
-     PagedList<TDanhMucSp> lst = new PagedList<TDanhMucSp>(lstsanpham, pageNumber, pagesize);
+     var lstsanpham = db.DanhMucSp.AsNoTracking().OrderBy(x => x.TenSp);
+     PagedList<DanhMucSp> lst = new PagedList<DanhMucSp>(lstsanpham, pageNumber, pagesize);
      ViewBag.maloai = maloai;
      return View(lst);
  }
