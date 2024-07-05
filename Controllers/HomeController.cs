@@ -1,7 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using GroupProject.Models;
-
+using X.PagedList;
+using Microsoft.EntityFrameworkCore;
 namespace GroupProject.Controllers;
 
 public class HomeController : Controller
@@ -14,25 +15,26 @@ public class HomeController : Controller
     }
 
      public IActionResult Index(int? page)
- {
-    
-     int pagesize = 8;
-     int pageNumber= page ==null || page<0?1:page.Value;
-     var lstsanpham = db.DanhMucSps.AsNoTracking().OrderBy(x=>x.TenSp);
-     PagedList<DanhMucSp> lst = new PagedList<DanhMucSp>(lstsanpham, pageNumber, pagesize);
-     return View(lstsanpham);
- }
+   {
 
- public IActionResult SanPhamTheoLoai(string naloai, int ? page)
- {
-     int pagesize = 8;
+     int pageSize = 8;
      int pageNumber = page == null || page < 0 ? 1 : page.Value;
-     var lstsanpham = db.DanhMucSp.AsNoTracking().OrderBy(x => x.TenSp);
-     PagedList<DanhMucSp> lst = new PagedList<DanhMucSp>(lstsanpham, pageNumber, pagesize);
-     ViewBag.maloai = maloai;
-     return View(lst);
- }
+     var lstsanpham = db.DanhMucSPs.AsNoTracking().OrderBy(x => x.TenSP);
+     PagedList<DanhMucSP> lst = new PagedList<DanhMucSP>(lstsanpham, pageNumber, pageSize);
+     return View(lstsanpham);
+   }
 
+    public IActionResult SanPhamTheoLoai(int maloai, int? page)
+  {
+//Doi String maloai thanh int maloai
+     int pageSize = 8;
+     int pageNumber = page == null || page < 0 ? 1 : page.Value;
+     var lstsanpham = db.DanhMucSPs.AsNoTracking().Where(x=>x.MaLoai=maloai)
+         .OrderBy(x => x.TenSP);
+     PagedList<DanhMucSP> lst = new PagedList<DanhMucSP>(lstsanpham, pageNumber, pageSize);
+     ViewBag.maloai = maloai;
+     return View(lstsanpham);
+  }
     public IActionResult Privacy()
     {
         return View();
