@@ -1,5 +1,5 @@
 ﻿@using X.PagedList.Mvc.Core;
-@model X.PagedList.IPagedList<DanhMucSp>
+@model X.PagedList.IPagedList<DanhMucSP>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -9,5 +9,5 @@
     @await Html.PartialAsync("PartialSanPham", item)
 }
 <div class="product__pagination">
-    @Html.PageListPager(Model, page=>Url.Action("Index", new{page=page}))
+    @Html.PagedListPager(Model, page=>Url.Action("Index", new{page=page}))
 </div>
