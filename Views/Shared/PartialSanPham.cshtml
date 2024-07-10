@@ -1,4 +1,4 @@
-﻿@model DanhMucSP
+﻿@model TDanhMucSp
 <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
     <div class="featured__item">
         <div class="featured__item__pic set-bg" data-setbg="@Url.Content("../ProductsImages/Images/" +Model.AnhDaiDien)" style="background=image:url(&quot;img/featured/feature-1.jpg&quot;);">
@@ -9,7 +9,7 @@
             </ul>
         </div>
         <div class="featured__item__text">
-            <h6><a asp-controller="Home" asp-action="ProductDetail" asp-route-maSp="@Model.MaSP">@Model.TenSP</a></h6>
+            <h6><a asp-controller="Home" asp-action="ProductDetail" asp-route-maSp="@Model.MaSp">@Model.TenSp</a></h6>
             <h5>@Model.GiaLonNhat</h5>
         </div>
     </div>

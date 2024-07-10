@@ -8,11 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
-builder.Services.AddDbContext<DataContext>(opts => {
-    opts.UseSqlServer(
-    builder.Configuration["ConnectionStrings:GroupProjectConnection"]);
-});
-builder.Services.AddScoped<IRepository, EFRepository>();
+var connectionString = builder.Configuration.GetConnectionString("GroupProjectConnection");
+Console.WriteLine($"Connection String: {connectionString}"); // Debug line
+
+builder.Services.AddDbContext<GroupProjectDBContext>(options =>
+options.UseSqlServer(connectionString));
+//builder.Services.AddScoped<IRepository, EFRepository>();
 
 builder.Services.AddSession();
 

@@ -4,8 +4,8 @@ using GroupProject.Models.Authentication;
 
 namespace GroupProject.Areas.Admin.Controllers
 {
-    [Authentication]
-    [CheckRoleAdmin]
+    //[Authentication]
+    //[CheckRoleAdmin]
     [Area("admin")]
     [Route("admin")]
     [Route("admin/homeadmin")]

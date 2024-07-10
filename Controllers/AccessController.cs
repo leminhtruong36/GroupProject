@@ -5,38 +5,43 @@ namespace GroupProject.Controllers
 {
     public class AccessController : Controller
     {
-        DataContext db = new DataContext();
+        GroupProjectDBContext db = new GroupProjectDBContext();
         //Login
         [HttpGet]
         public IActionResult Login()
         {
+            TempData["Message"] = "";
             if (HttpContext.Session.GetString("Username") == null)
             {
                 return View();
             }
             else
             {
+                TempData["Message"] = "Sai thong tin dang nhap";
                 return RedirectToAction("Index", "Home");
             }
         }
         [HttpPost]
-        public IActionResult Login(User user)
+        public IActionResult Login(TUser Users)
         {
+            TempData["Message"] = "";
             if (HttpContext.Session.GetString("Username") == null)
             {
-                var checkRoles = db.Users.Where(x => x.Username.Equals(user.Username) && x.Password.Equals(user.Password) && x.LoaiUser.Equals("0")).FirstOrDefault();
-                if (checkRoles != null)
+                var u = db.TUsers.Where(x => x.Username.Equals(Users.Username) && x.Password.Equals(Users.Password) && x.LoaiUser == (byte)0).FirstOrDefault();
+                if (u != null)
                 {
-                    HttpContext.Session.SetString("Username", checkRoles.Username.ToString().Trim());
-                    HttpContext.Session.SetString("Role", checkRoles.LoaiUser.ToString().Trim());
+                    TempData["Message"] = "admin";
+                    HttpContext.Session.SetString("Username", u.Username.ToString().Trim());
+                    HttpContext.Session.SetString("Role", u.LoaiUser.ToString().Trim());
                     return RedirectToAction("index", "homeadmin", new { area = "admin" });
                 }
 
-                var checkRoleGV = db.Users.Where(x => x.Username.Equals(user.Username) && x.Password.Equals(user.Password) && x.LoaiUser.Equals("1")).FirstOrDefault();
-                if (checkRoleGV != null)
+                var a = db.TUsers.Where(x => x.Username.Equals(Users.Username) && x.Password.Equals(Users.Password) && x.LoaiUser == (byte)1).FirstOrDefault();
+                if (a != null)
                 {
-                    HttpContext.Session.SetString("Username", checkRoleGV.Username.ToString().Trim());
-                    HttpContext.Session.SetString("Role", checkRoleGV.LoaiUser.ToString().Trim());
+                    TempData["Message"] = "user";
+                    HttpContext.Session.SetString("Username", a.Username.ToString().Trim());
+                    HttpContext.Session.SetString("Role", a.LoaiUser.ToString().Trim());
                     return RedirectToAction("index", "home");
                 }
             }

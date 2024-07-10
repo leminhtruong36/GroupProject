@@ -1,4 +1,4 @@
-﻿@model User
+﻿@model TUser
 
 @{
     Layout = null;
@@ -16,6 +16,7 @@
 <body>
     <div class="wrapper">
         <div class="title-text">
+            <p>@TempData["Message"]</p>
             <div class="title login">Login Form</div>
             <div class="title signup">Signup Form</div>
         </div>

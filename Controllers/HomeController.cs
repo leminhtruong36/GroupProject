@@ -9,7 +9,7 @@ namespace GroupProject.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    DataContext db = new DataContext();
+    GroupProjectDBContext db = new GroupProjectDBContext();
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
@@ -20,32 +20,32 @@ public class HomeController : Controller
 
         int pageSize = 8;
         int pageNumber = page == null || page < 0 ? 1 : page.Value;
-        var lstsanpham = db.DanhMucSPs.AsNoTracking().OrderBy(x => x.TenSP);
-        PagedList<DanhMucSP> lst = new PagedList<DanhMucSP>(lstsanpham, pageNumber, pageSize);
-        return View(lstsanpham);
+        var lstsanpham = db.TDanhMucSps.AsNoTracking().OrderBy(x => x.TenSp);
+        PagedList<TDanhMucSp> lst = new PagedList<TDanhMucSp>(lstsanpham, pageNumber, pageSize);
+        return View(lst);
     }
 
     public IActionResult SanPhamTheoLoai(string maloai, int? page)
     {
         int pageSize = 8;
         int pageNumber = page == null || page < 0 ? 1 : page.Value;
-        var lstsanpham = db.DanhMucSPs.AsNoTracking()
-            .OrderBy(x => x.TenSP);
-        PagedList<DanhMucSP> lst = new PagedList<DanhMucSP>(lstsanpham, pageNumber, pageSize);
+        var lstsanpham = db.TDanhMucSps.AsNoTracking()
+            .OrderBy(x => x.TenSp);
+        PagedList<TDanhMucSp> lst = new PagedList<TDanhMucSp>(lstsanpham, pageNumber, pageSize);
         ViewBag.maloai = maloai;
         return View(lst);
     }
-    public IActionResult ChiTietSanPham(int maSp)
+    public IActionResult ChiTietSanPham(string maSp)
     {
-        var sanPham = db.DanhMucSPs.SingleOrDefault(x => x.MaSP == maSp);
-        var anhSanPham= db.AnhSPs.Where(x=>x.MaSP == maSp).ToList();
+        var sanPham = db.TDanhMucSps.SingleOrDefault(x => x.MaSp == maSp);
+        var anhSanPham= db.TAnhSps.Where(x=>x.MaSp == maSp).ToList();
         ViewBag.anhSanPham = anhSanPham;
         return View(sanPham);
     }
-    public IActionResult ProductDetal(int maSp)
+    public IActionResult ProductDetal(string maSp)
     {
-        var sanPham = db.DanhMucSPs.SingleOrDefault(x => x.MaSP == maSp);
-        var anhSanPham = db.AnhSPs.Where(x => x.MaSP == maSp).ToList();
+        var sanPham = db.TDanhMucSps.SingleOrDefault(x => x.MaSp == maSp);
+        var anhSanPham = db.TAnhSps.Where(x => x.MaSp == maSp).ToList();
         var homeProductDetailViewModel = new HomeProductDetailViewModels{
             danhMucSP = sanPham,
             anhSps=anhSanPham };

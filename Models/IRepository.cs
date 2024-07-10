@@ -5,21 +5,21 @@ namespace GroupProject.Models
     public interface IRepository
     {
 
-        IQueryable<ChatLieu> ChatLieus { get; }
-        IQueryable<LoaiSP> LoaiSPs { get; }
-        IQueryable<LoaiDT> LoaiDTs { get; }
-        IQueryable<AnhSP> AnhSPs { get; }
-        IQueryable<HangSX> HangSXs { get; }
-        IQueryable<QuocGia> QuocGias { get; }
-        IQueryable<DanhMucSP> DanhMucSPs { get; }
-        IQueryable<ChiTietSanPham> ChiTietSanPhams { get; }
-        IQueryable<MauSac> MauSacs { get; }
-        IQueryable<KichThuoc> KichThuocs { get; }
-        IQueryable<ChiTietHDB> ChiTietHDBs { get; }
-        IQueryable<HoaDonBan> HoaDonBans { get; }
-        IQueryable<KhachHang> KhachHangs { get; }
-        IQueryable<NhanVien> NhanViens { get; }
-        IQueryable<User> Users { get; }
+        IQueryable<TChatLieu> ChatLieus { get; }
+        IQueryable<TLoaiSp> LoaiSPs { get; }
+        IQueryable<TLoaiDt> LoaiDTs { get; }
+        IQueryable<TAnhSp> AnhSPs { get; }
+        IQueryable<THangSx> HangSXs { get; }
+        IQueryable<TQuocGium> QuocGias { get; }
+        IQueryable<TDanhMucSp> DanhMucSPs { get; }
+        IQueryable<TChiTietSanPham> ChiTietSanPhams { get; }
+        IQueryable<TMauSac> MauSacs { get; }
+        IQueryable<TKichThuoc> KichThuocs { get; }
+        IQueryable<TChiTietHdb> ChiTietHDBs { get; }
+        IQueryable<THoaDonBan> HoaDonBans { get; }
+        IQueryable<TKhachHang> KhachHangs { get; }
+        IQueryable<TNhanVien> NhanViens { get; }
+        IQueryable<TUser> Users { get; }
         
         
 

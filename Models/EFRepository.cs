@@ -2,26 +2,26 @@
 {
     public class EFRepository : IRepository
     {
-        private DataContext context;
-        public EFRepository(DataContext ctx)
+        private GroupProjectDBContext context;
+        public EFRepository(GroupProjectDBContext ctx)
         {
             context = ctx;
         }
-        public IQueryable<ChatLieu> ChatLieus => context.ChatLieus;
-        public IQueryable<LoaiSP> LoaiSPs => context.LoaiSPs;
-        public IQueryable<LoaiDT> LoaiDTs => context.LoaiDTs;
-        public IQueryable<AnhSP> AnhSPs => context.AnhSPs;
-        public IQueryable<HangSX> HangSXs => context.HangSXs;
-        public IQueryable<QuocGia> QuocGias => context.QuocGias;
-        public IQueryable<DanhMucSP> DanhMucSPs => context.DanhMucSPs;
-        public IQueryable<ChiTietSanPham> ChiTietSanPhams => context.ChiTietSanPhams;
-        public IQueryable<MauSac> MauSacs => context.MauSacs;
-        public IQueryable<KichThuoc> KichThuocs => context.KichThuocs;
-        public IQueryable<ChiTietHDB> ChiTietHDBs => context.ChiTietHDBs;
-        public IQueryable<HoaDonBan> HoaDonBans => context.HoaDonBans;
-        public IQueryable<KhachHang> KhachHangs => context.KhachHangs;
-        public IQueryable<NhanVien> NhanViens => context.NhanViens;
-        public IQueryable<User> Users => context.Users;
+        public IQueryable<TChatLieu> ChatLieus => context.TChatLieus;
+        public IQueryable<TLoaiSp> LoaiSPs => context.TLoaiSps;
+        public IQueryable<TLoaiDt> LoaiDTs => context.TLoaiDts;
+        public IQueryable<TAnhSp> AnhSPs => context.TAnhSps;
+        public IQueryable<THangSx> HangSXs => context.THangSxes;
+        public IQueryable<TQuocGium> QuocGias => context.TQuocGia;
+        public IQueryable<TDanhMucSp> DanhMucSPs => context.TDanhMucSps;
+        public IQueryable<TChiTietSanPham> ChiTietSanPhams => context.TChiTietSanPhams;
+        public IQueryable<TMauSac> MauSacs => context.TMauSacs;
+        public IQueryable<TKichThuoc> KichThuocs => context.TKichThuocs;
+        public IQueryable<TChiTietHdb> ChiTietHDBs => context.TChiTietHdbs;
+        public IQueryable<THoaDonBan> HoaDonBans => context.THoaDonBans;
+        public IQueryable<TKhachHang> KhachHangs => context.TKhachHangs;
+        public IQueryable<TNhanVien> NhanViens => context.TNhanViens;
+        public IQueryable<TUser> Users => context.TUsers;
 
     }
 }
