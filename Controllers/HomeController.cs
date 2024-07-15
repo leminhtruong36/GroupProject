@@ -4,10 +4,12 @@ using GroupProject.Models;
 using Microsoft.EntityFrameworkCore;
 using X.PagedList;
 using GroupProject.ViewModels;
+using GroupProject.Models.Authentication;
 namespace GroupProject.Controllers;
-
+[Authentication]
 public class HomeController : Controller
 {
+    
     private readonly ILogger<HomeController> _logger;
     GroupProjectDBContext db = new GroupProjectDBContext();
     public HomeController(ILogger<HomeController> logger)
