@@ -6,7 +6,7 @@
             <span>All departments</span>
         </div>
         <ul>
-@foreach(var item in Model)
+            @foreach(var item in Model)
             {
                 <li><a asp-controller="Home"asp-action="SanPhamTheoLoai" asp-route-maloai="@item.MaLoai">@item.Loai</a></li>
             }

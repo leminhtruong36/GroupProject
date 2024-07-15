@@ -1,7 +1,7 @@
 ﻿@model GroupProject.Models.TDanhMucSp
 @{
     ViewData["Title"] = "ChiTietSanPham";
-    Layout = null;
+    
 }
 
 <!-- Product Details Section Begin -->
@@ -12,13 +12,13 @@
                 <div class="product__details__pic">
                     <div class="product__details__pic__item">
                         <img class="product__details__pic__item--large"
-                             src="@Url.Content("../Images/" +Model.AnhDaiDien)" alt="" >
+                             src="@Url.Content("../IMG/Images/" +Model.AnhDaiDien)" alt="" >
                     </div>
                     <div class="product__details__pic__slider owl-carousel">
                         @foreach(var image in ViewBag.anhSanPham)
                         {
-                            <img data-imgbigurl="@Url.Content("../Images/" + image.TenFileAnh)"
-                                 src="@Url.Content("../Images/"+image.TenFileAnh)" alt="">
+                            <img data-imgbigurl="@Url.Content("..IMG/Images/" + image.TenFileAnh)"
+                                 src="@Url.Content("..IMG/Images/"+image.TenFileAnh)" alt="">
                         }
                     </div>
                 </div>
